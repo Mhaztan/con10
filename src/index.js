@@ -6,7 +6,13 @@ import config from './config.js';
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+    origin: "https://con10-frontend.vercel.app",  // Allow only this domain
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true
+}));
+
 app.use(bodyParser.json());
 
 app.use('/api/content', contentRoutes);
